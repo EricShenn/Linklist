@@ -18,6 +18,7 @@ Linklist Linklist::init()
 {
     cin>>_next[0];
     _next[0]._head = NULL;
+    _next[0]._next = NULL;
     for(int i=1;i<_num;i++)
     {
         cin>>_next[i];
@@ -33,10 +34,10 @@ Linklist Linklist::init()
 ostream &operator << (ostream &out,const Linklist &linklist)
 {
     
-    Node *p = &linklist._next[0];
+    Node *p = linklist._next;
     int i = 1;
     cout<<*p;
-    while((p = p->_next))
+    while((p = p->_next)!=NULL)
     {
         if(i++!=linklist._num)
             cout<<*p;
@@ -94,12 +95,11 @@ Linklist::Linklist (const Linklist & linklist)
 
 void Linklist::add_student(Node &node)
 {
-
         Node *base = this;
-        if (node._stu.get_gpa() >= base->_next->_stu.get_gpa())
+        if (node._stu.get_gpa() >= _next[0]._stu.get_gpa())
         {
             node._head = NULL;
-            node._next = base->_next;
+            node._next = &_next[0];
             _next = &node;
         }
         else
