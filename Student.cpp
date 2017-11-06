@@ -18,7 +18,7 @@ Student::Student(string id,string name,double gpa)
 ostream & operator<<(ostream &out, const Student &m)
 {
     {
-        out <<m._id<<' '<<setw(11)<<m._name<<' '<<setw(5)<<"  "<<m.GPA;
+        out <<m._id<<' '<<setw(11)<<m._name<<' '<<setw(5)<<m.GPA;
     }
     return out;
 }

@@ -7,7 +7,7 @@
 //
 
 #include "Node.hpp"
-
+#include <iomanip>
 
 Node::Node(Node *head,Node *next, Student stu,int rank)
 :_stu(stu),_rank(rank)
@@ -27,7 +27,7 @@ istream &operator >>(istream &in,Node &node)
 
 ostream &operator <<(ostream &out,Node &node)
 {
-    cout<<node._stu<<" "<<node._rank<<"\n";
+    cout<<node._stu<<setw(5)<<node._rank<<"--End--";
     return out;
 }
 

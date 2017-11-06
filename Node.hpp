@@ -23,6 +23,7 @@ public:
     friend ostream &operator <<(ostream &out,Node &node);
     Node &operator = (const Node &node);
     
+    
     Node *_head;
     Node *_next;
     Student _stu;

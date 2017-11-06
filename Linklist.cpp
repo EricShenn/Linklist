@@ -21,8 +21,10 @@ Linklist Linklist::init()
     for(int i=1;i<_num;i++)
     {
         cin>>_next[i];
-        _next[i-1]._next  = &_next[i];
-        _next[i]._head = &_next[i-1];
+        
+        //_next[i-1]._next  = &_next[i];
+        //_next[i]._head = &_next[i-1];
+        this->add_student(_next[i]);
 
     }
     return *this;
@@ -92,26 +94,46 @@ Linklist::Linklist (const Linklist & linklist)
 
 void Linklist::add_student(Node &node)
 {
-    if(node._stu.get_gpa()<_next[_num-1]._stu.get_gpa())
-        return;
-    else
-    {
-        for(int i=0;i<(_num-1);i++)
-            if(node._stu.get_gpa()<_next[i]._stu.get_gpa() && node._stu.get_gpa() >= _next[i+1]._stu.get_gpa())
+
+        Node *base = this;
+        if (node._stu.get_gpa() >= base->_next->_stu.get_gpa())
+        {
+            node._head = NULL;
+            node._next = base->_next;
+            _next = &node;
+        }
+        else
+            while((base = base->_next))
+        {
+            if(base->_next!=NULL)
+            if (node._stu.get_gpa()<base->_stu.get_gpa()&&node._stu.get_gpa()>=base->_next->_stu.get_gpa())
             {
-                _next[i]._next  = &node;
-                node._head = &_next[i];
-                node._next = &_next[i+1];
-                _next[i+1]._head = &node;
-                node._rank = _next[i]._rank+1;
+                node._head = base;
+                node._next = base->_next;
+                base->_next = &node;
+                break;
             }
-        Node *p = &node;
+            if(base->_next ==NULL)
+            {
+                base->_next = &node;
+                node._head = base;
+                node._next = NULL;
+                break;
+            }
+        }
+    
+    
+    
+        Node *p = this;
+
+        p->_next->_rank = 0;
+        int i = 0;
         while((p = p->_next))
         {
-            p->_rank++;
+            p->_rank = ++i;
+        
         }
         
-    }
 }
 
 

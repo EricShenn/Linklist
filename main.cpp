@@ -22,7 +22,6 @@ int main(int argc, const char * argv[]) {
     Linklist test(4);
     cin>>test;
     Node _add;
-    test.sort();
     cout<<test;
     cin>>_add;
     test.add_student(_add);
