@@ -103,6 +103,7 @@ void Linklist::add_student(Node &node)
         {
             node._head = NULL;
             node._next = &_next[0];
+            node._next->_head = base;
             _next = &node;
         }
         else
@@ -143,4 +144,45 @@ void Linklist::kuoke(int num)
 {
     _num = num;
     cout<<"课程容量已变为："<<num<<endl;
+}
+int Linklist::get_num()
+{
+    return _num;
+}
+
+
+Linklist Linklist::delete_student(Node &node)
+{
+    if (node._rank == 1)
+    {
+        _next = node._next;
+        node._next->_head = NULL;
+    }
+    else if(node._next == NULL)
+    {
+        node._head->_next =NULL;
+    }
+    else
+    {
+        node._head->_next = node._next;
+        node._next->_head = node._head;
+    }
+    Node *p = this;
+    p->_next->_rank = 0;
+    int i = 0;
+    while((p = p->_next))
+    {
+        p->_rank = ++i;
+        
+    }
+    return *this;
+}
+
+Node &Linklist::find(string name)throw (char)
+{
+    Node *p = this;
+    while((p = p->_next))
+        if(p->_stu._name==name)
+            return *p;
+    throw (char)0;
 }

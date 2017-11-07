@@ -25,7 +25,9 @@ public:
     void add_student(Node &node);
     Linklist add_node();
     void kuoke(int num);
-    
+    int get_num();
+    Linklist delete_student(Node &node);
+    Node &find(string name)throw (char);
 private:
     int _num;
     
