@@ -15,7 +15,7 @@
 class Linklist:public Node
 {
 public:
-    Linklist(int num);
+    Linklist(int num=1,const char* classname = "incomplete");
     
     Linklist init();
     friend ostream &operator << (ostream &out,const Linklist &linklist);
@@ -28,8 +28,11 @@ public:
     int get_num();
     Linklist delete_student(Node &node);
     Node &find(string name)throw (char);
+    void origin_data();
+    void add_classname(const char* classname);
 private:
     int _num;
+    string _classname;
     
 };
 

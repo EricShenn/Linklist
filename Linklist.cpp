@@ -7,9 +7,9 @@
 //
 
 #include "Linklist.hpp"
-
-Linklist::Linklist(int num)
-:_num(num)
+#include <iomanip>
+Linklist::Linklist(int num,const char* classname)
+:_num(num),_classname(classname)
 {
     _next = new Node;
 }
@@ -36,7 +36,7 @@ Linklist Linklist::init()
 ostream &operator << (ostream &out,const Linklist &linklist)
 {
     cout<<"课程容量："<<linklist._num<<endl;
-    
+    cout<<setw(8)<<"stu_id"<<setw(20)<<"name"<<setw(5)<<"GPA"<<setw(7)<<"rank"<<endl;
     Node *p = linklist._next;
     int i = 1;
     cout<<*p;
@@ -181,8 +181,35 @@ Linklist Linklist::delete_student(Node &node)
 Node &Linklist::find(string name)throw (char)
 {
     Node *p = this;
+    name = "\n" + name;
     while((p = p->_next))
-        if(p->_stu._name==name)
+        if(p->_stu._id==name)
             return *p;
     throw (char)0;
 }
+
+void Linklist::origin_data()
+{
+    Student *tmp1 = new Student("\n16121990","Shen Bonan",3.65);
+    Student *tmp2 = new Student("\n16121932","Zhi Yihao",3.96);
+    Student *tmp3 = new Student("\n16121943","Sun Hanzhe",3.84);
+    Student *tmp4 = new Student("\n16121922","Liu Chengshuai",3.74);
+
+    Node *node_tmp1 = new Node(NULL,NULL,*tmp1,0);
+    Node *node_tmp2 = new Node(NULL,NULL,*tmp2,0);
+    Node *node_tmp3 = new Node(NULL,NULL,*tmp3,0);
+    Node *node_tmp4 = new Node(NULL,NULL,*tmp4,0);
+    
+    this->_next = node_tmp1;
+    this->add_student(*node_tmp2);
+    this->add_student(*node_tmp3);
+    this->add_student(*node_tmp4);
+
+}
+
+void Linklist::add_classname(const char*classname)
+{
+    _classname = classname;
+}
+
+
