@@ -14,6 +14,9 @@
 #include "Student.hpp"
 
 
+
+
+
 class Node
 {
 public:
@@ -24,8 +27,9 @@ public:
 
     friend ostream &operator <<(ostream &out,Node &node);
     Node &operator = (const Node &node);
-    
-    
+    friend class Linklist;
+   
+
     Node *_head;
     Node *_next;
     Student _stu;

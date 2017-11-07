@@ -35,7 +35,7 @@ Linklist Linklist::init()
 
 ostream &operator << (ostream &out,const Linklist &linklist)
 {
-    cout<<"课程容量："<<linklist._num<<endl;
+    cout<<linklist._classname<<"容量："<<linklist._num<<endl;
     cout<<setw(8)<<"stu_id"<<setw(20)<<"name"<<setw(5)<<"GPA"<<setw(7)<<"rank"<<endl;
     Node *p = linklist._next;
     int i = 1;

@@ -27,16 +27,16 @@ int main(int argc, const char * argv[]) {
         cout<<"-------------------------------------------------"<<endl;
         cout<<"1.查看“面向对象程序设计”选课情况 2.查看”计算机组成原理实验“选课情况"<<endl;
         cout<<"-------------------------------------------------"<<endl;
-        int i;
+        char i;
         cin>>i;
-        if(i==99)
+        if(i=='9')
         {cout<<"退出系统！\n"<<endl;break;}
         switch (i) {
-            case 1:
+            case '1':
                 select(*all_class[0]);
                 break;
                 
-            case 2:
+            case '2':
                 select(*all_class[1]);
                 break;
             default:
@@ -53,29 +53,32 @@ void select(Linklist &oop)
     oop.origin_data();
     while(1){
         cout<<"-------------------------------------------------"<<endl;
-        cout<<"1.当前选课情况 2.添加学生 3.扩课 4.移除学生"<<endl;
+        cout<<"1.当前选课情况 2.添加学生 3.扩课 4.移除学生 5.返回上一级菜单"<<endl;
         cout<<"-------------------------------------------------"<<endl;
-        int i,num;
+        int num;
         string find_name;
+        char i;
         cin>>i;
-        if(i==99)
+        if(i=='9')
             break;
         Node *_add = new Node;
+        if(i=='5')
+            break;
         switch (i) {
-            case 1:
+            case '1':
                 cout<<oop;
                 break;
-            case 2:
+            case '2':
                 cin>>_add;
                 oop.add_student(*_add);
                 break;
-            case 3:
+            case '3':
                 cout<<"当前限制容量："<<oop.get_num()<<endl;
                 cout<<"请输入你想扩的容量：";
                 cin>>num;
                 oop.kuoke(num);
                 break;
-            case 4:
+            case '4':
                 cout<<"请输入你要移除的学生的学号:"<<endl;
                 cin>>find_name;
                 try{
