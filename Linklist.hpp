@@ -22,7 +22,11 @@ public:
     friend istream &operator >> (istream &in,Linklist &linklist);
     Linklist sort();
     Linklist (const Linklist & linklist);
-    void add_student(Node &stu);
+    void add_student(Node &node);
+    Linklist add_node();
+    void kuoke(int num);
+    
+    
 private:
     int _num;
     

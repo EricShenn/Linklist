@@ -11,16 +11,18 @@
 Linklist::Linklist(int num)
 :_num(num)
 {
-    _next = new Node[num];
+    _next = new Node[_num];
 }
 
 Linklist Linklist::init()
 {
     cin>>_next[0];
+    _next[0]._stu._id = "\n" + _next[0]._stu._id;
     _next[0]._head = NULL;
     _next[0]._next = NULL;
     for(int i=1;i<_num;i++)
     {
+        Node etmp = new Node;
         cin>>_next[i];
         
         //_next[i-1]._next  = &_next[i];
@@ -33,6 +35,7 @@ Linklist Linklist::init()
 
 ostream &operator << (ostream &out,const Linklist &linklist)
 {
+    cout<<"课程容量："<<linklist._num<<endl;
     
     Node *p = linklist._next;
     int i = 1;
@@ -136,4 +139,8 @@ void Linklist::add_student(Node &node)
         
 }
 
-
+void Linklist::kuoke(int num)
+{
+    _num = num;
+    cout<<"课程容量已变为："<<num<<endl;
+}

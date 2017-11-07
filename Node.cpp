@@ -25,6 +25,8 @@ istream &operator >>(istream &in,Node &node)
     return in;
 }
 
+
+
 ostream &operator <<(ostream &out,Node &node)
 {
     cout<<node._stu<<setw(5)<<node._rank<<"--End--";

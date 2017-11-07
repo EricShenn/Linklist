@@ -26,6 +26,8 @@ int main(int argc, const char * argv[]) {
     cin>>_add;
     test.add_student(_add);
     cout<<test;
+    test.kuoke(5);
+    cout<<test;
     
  
 }

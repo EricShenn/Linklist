@@ -27,7 +27,7 @@ public:
     friend istream & operator>>(istream &in, Student &m);
     Student(const Student &stu);
     double get_gpa();
-
+    friend class Linklist;
 
 private:
     string _id;
