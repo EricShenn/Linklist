@@ -39,11 +39,11 @@ ostream &operator << (ostream &out,const Linklist &linklist)
     cout<<setw(8)<<"stu_id"<<setw(20)<<"name"<<setw(5)<<"GPA"<<setw(7)<<"rank"<<endl;
     Node *p = linklist._next;
     int i = 1;
-    cout<<*p;
+    cout<<*p<<'/'<<linklist._num;
     while((p = p->_next)!=NULL)
     {
         if(i++<linklist._num)
-            cout<<*p;
+            cout<<*p<<'/'<<linklist._num;
     }
     /*
     for(int i =0;i<linklist._num;i++)
@@ -98,36 +98,7 @@ Linklist::Linklist (const Linklist & linklist)
 
 void Linklist::add_student(Node &node)
 {
-        Node *base = this;
-        if (node._stu.get_gpa() >= _next[0]._stu.get_gpa())
-        {
-            node._head = NULL;
-            node._next = &_next[0];
-            node._next->_head = base;
-            _next = &node;
-        }
-        else
-            while((base = base->_next))
-        {
-            if(base->_next!=NULL)
-            if (node._stu.get_gpa()<base->_stu.get_gpa()&&node._stu.get_gpa()>=base->_next->_stu.get_gpa())
-            {
-                node._head = base;
-                node._next = base->_next;
-                base->_next = &node;
-                break;
-            }
-            if(base->_next ==NULL)
-            {
-                base->_next = &node;
-                node._head = base;
-                node._next = NULL;
-                break;
-            }
-        }
-    
-    
-    
+        insert_by_gpa(node);    
         Node *p = this;
 
         p->_next->_rank = 0;
@@ -138,6 +109,39 @@ void Linklist::add_student(Node &node)
         
         }
         
+}
+
+Linklist Linklist::insert_by_gpa(Node &node)
+{
+    Node *base = this;
+    if (node._stu.get_gpa() >= _next[0]._stu.get_gpa())
+    {
+        node._head = NULL;
+        node._next = &_next[0];
+        node._next->_head = &node;
+        _next = &node;
+    }
+    else
+        while((base = base->_next))
+        {
+            if(base->_next!=NULL)
+                if (node._stu.get_gpa()<base->_stu.get_gpa()&&node._stu.get_gpa()>=base->_next->_stu.get_gpa())
+                {
+                    node._head = base;
+                    node._next = base->_next;
+                    base->_next = &node;
+                    node._next->_head = &node;
+                    break;
+                }
+            if(base->_next ==NULL)
+            {
+                base->_next = &node;
+                node._head = base;
+                node._next = NULL;
+                break;
+            }
+        }
+    return *this;
 }
 
 void Linklist::kuoke(int num)

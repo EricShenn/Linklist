@@ -24,6 +24,7 @@ int main(int argc, const char * argv[]) {
     
     while(1)
     {
+
         cout<<"-------------------------------------------------"<<endl;
         cout<<"1.查看“面向对象程序设计”选课情况 2.查看”计算机组成原理实验“选课情况"<<endl;
         cout<<"-------------------------------------------------"<<endl;
@@ -69,7 +70,7 @@ void select(Linklist &oop)
                 cout<<oop;
                 break;
             case '2':
-                cin>>_add;
+                cin>>*_add;
                 oop.add_student(*_add);
                 break;
             case '3':

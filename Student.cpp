@@ -9,6 +9,8 @@
 #include "Student.hpp"
 #include <stdlib.h>
 #include <iomanip>
+#include <cstring>
+
 Student::Student(string id,string name,double gpa)
 :_id(id),_name(name),GPA(gpa)
 {
@@ -18,7 +20,7 @@ Student::Student(string id,string name,double gpa)
 ostream & operator<<(ostream &out, const Student &m)
 {
     {
-        out <<m._id<<' '<<setw(20)<<m._name<<setw(5)<<m.GPA;
+        out <<setw(8)<<m._id<<' '<<setw(20)<<m._name<<setw(5)<<m.GPA;
     }
     return out;
 }
@@ -57,3 +59,5 @@ double Student::get_gpa()
 {
     return this->GPA;
 }
+
+

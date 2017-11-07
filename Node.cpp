@@ -30,6 +30,10 @@ istream &operator >>(istream &in,Node &node)
 ostream &operator <<(ostream &out,Node &node)
 {
     cout<<node._stu<<setw(5)<<node._rank;
+    
+
+    
+
     return out;
 }
 

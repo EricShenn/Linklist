@@ -20,8 +20,6 @@
 using namespace std;
 
 
-
-
 class Student
 {
 public:
@@ -32,11 +30,14 @@ public:
     Student(const Student &stu);
     double get_gpa();
     friend class Linklist;
+    friend class Node;
 
 private:
     string _id;
     string _name;
     double GPA;
+
+    
 };
 
 

@@ -30,9 +30,11 @@ public:
     Node &find(string name)throw (char);
     void origin_data();
     void add_classname(const char* classname);
+    Linklist insert_by_gpa(Node &node);
 private:
     int _num;
     string _classname;
+    
     
 };
 
