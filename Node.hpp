@@ -20,6 +20,7 @@ public:
     Node(Node *head=NULL,Node *next=NULL, Student stu = Student(),int rank = 0);
     Node(const Node &node);
     friend istream &operator >>(istream &in,Node &node);
+    friend istream &operator >>(istream &in,Node *node);
 
     friend ostream &operator <<(ostream &out,Node &node);
     Node &operator = (const Node &node);

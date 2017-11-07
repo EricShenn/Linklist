@@ -21,10 +21,15 @@ int main(int argc, const char * argv[]) {
 
     Linklist test(4);
     cin>>test;
-    Node _add;
     cout<<test;
+    while(1){
+    Node *_add = new Node;
     cin>>_add;
-    test.add_student(_add);
+    test.add_student(*_add);
+        
+    cout<<test;
+        
+    }
     cout<<test;
     test.kuoke(5);
     cout<<test;

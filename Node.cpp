@@ -49,3 +49,9 @@ Node &Node::operator = (const Node &node)
     _stu  = node._stu;
     return *this;
 }
+
+istream &operator >>(istream &in,Node *node)
+{
+    in>>node->_stu;
+    return in;
+}

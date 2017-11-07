@@ -11,7 +11,7 @@
 Linklist::Linklist(int num)
 :_num(num)
 {
-    _next = new Node[_num];
+    _next = new Node;
 }
 
 Linklist Linklist::init()
@@ -22,12 +22,12 @@ Linklist Linklist::init()
     _next[0]._next = NULL;
     for(int i=1;i<_num;i++)
     {
-        Node etmp = new Node;
-        cin>>_next[i];
+        Node *etmp = new Node;
+        cin>>etmp;
         
         //_next[i-1]._next  = &_next[i];
         //_next[i]._head = &_next[i-1];
-        this->add_student(_next[i]);
+        this->add_student(*etmp);
 
     }
     return *this;
@@ -42,7 +42,7 @@ ostream &operator << (ostream &out,const Linklist &linklist)
     cout<<*p;
     while((p = p->_next)!=NULL)
     {
-        if(i++!=linklist._num)
+        if(i++<linklist._num)
             cout<<*p;
     }
     /*

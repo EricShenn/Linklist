@@ -26,7 +26,6 @@ public:
     Linklist add_node();
     void kuoke(int num);
     
-    
 private:
     int _num;
     
