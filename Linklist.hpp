@@ -23,13 +23,12 @@ public:
     Linklist sort();
     Linklist (const Linklist & linklist);
     void add_student(Node &node);
-    Linklist add_node();
     void kuoke(int num);
     int get_num();
-    Linklist delete_student(Node &node);
-    Node &find(string name)throw (char);
+    Linklist& delete_student(Node &node);
+    Node &find(string name)throw(char);
     void origin_data();
-    void add_classname(const char* classname);
+    void change_classname(const char* classname);
     Linklist insert_by_gpa(Node &node);
 private:
     int _num;

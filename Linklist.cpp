@@ -11,7 +11,8 @@
 Linklist::Linklist(int num,const char* classname)
 :_num(num),_classname(classname)
 {
-    _next = new Node;
+  //  _next = new Node;
+    ;
 }
 
 Linklist Linklist::init()
@@ -38,6 +39,8 @@ ostream &operator << (ostream &out,const Linklist &linklist)
     cout<<linklist._classname<<"容量："<<linklist._num<<endl;
     cout<<setw(8)<<"stu_id"<<setw(20)<<"name"<<setw(5)<<"GPA"<<setw(7)<<"rank"<<endl;
     Node *p = linklist._next;
+    if(p==NULL)
+        return out;
     int i = 1;
     cout<<*p<<'/'<<linklist._num;
     while((p = p->_next)!=NULL)
@@ -98,9 +101,9 @@ Linklist::Linklist (const Linklist & linklist)
 
 void Linklist::add_student(Node &node)
 {
-        insert_by_gpa(node);    
+        insert_by_gpa(node);
+    
         Node *p = this;
-
         p->_next->_rank = 0;
         int i = 0;
         while((p = p->_next))
@@ -114,6 +117,8 @@ void Linklist::add_student(Node &node)
 Linklist Linklist::insert_by_gpa(Node &node)
 {
     Node *base = this;
+    if(_next == NULL)
+    {_next = &node;return *this;}
     if (node._stu.get_gpa() >= _next[0]._stu.get_gpa())
     {
         node._head = NULL;
@@ -155,7 +160,7 @@ int Linklist::get_num()
 }
 
 
-Linklist Linklist::delete_student(Node &node)
+Linklist &Linklist::delete_student(Node &node)
 {
     if (node._rank == 1)
     {
@@ -204,14 +209,14 @@ void Linklist::origin_data()
     Node *node_tmp3 = new Node(NULL,NULL,*tmp3,0);
     Node *node_tmp4 = new Node(NULL,NULL,*tmp4,0);
     
-    this->_next = node_tmp1;
+    this->add_student(*node_tmp1);
     this->add_student(*node_tmp2);
     this->add_student(*node_tmp3);
     this->add_student(*node_tmp4);
 
 }
 
-void Linklist::add_classname(const char*classname)
+void Linklist::change_classname(const char*classname)
 {
     _classname = classname;
 }
